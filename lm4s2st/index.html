@@ -23,10 +23,10 @@
 <main role="main">
 <article itemscope itemtype="https://schema.org/BlogPosting">
 
-<div class="container pt-5 mt-5 shadow p-5 mb-5 bg-white rounded">
+<div class="container pt-5 mt-5 shadow-lg p-5 mb-5 bg-white rounded">
 	<div class="text-center">
-	<h1>LM4S2ST</h1>
-        <h4>LM4S2ST: Language Models for Speech to Speech Translation</h4>
+	<h1>LM4S2ST:</h1>
+        <h4>Language Models for Speech to Speech Translation</h4>
 		<!-- [<a href="https://arxiv.org/abs/2303.03926">Paper</a>] -->
 		[<a>Paper</a>]
 
@@ -45,7 +45,6 @@ synthesis language model. We use discretized speech units, which are generated i
 This grants our framework the ability to preserve the voice characteristics and the speaking style of the original speech.
 We examine our system on Chinese->English and English->Spanish pairs.
 Experimental results show that our system can generate speech with high translation quality and audio quality. 
-Speech samples are available at <a href="speechtranslation.github.io/lm4s2st"> here </a>.  
       </p>     
 	  <p>This page is for <b>research demonstration purposes</b> only.</p>
 
@@ -62,7 +61,7 @@ Speech samples are available at <a href="speechtranslation.github.io/lm4s2st"> h
 </div>
 
 
-<div class="container pt-5 mt-5 shadow p-5 mb-5 bg-white rounded">		
+<div class="container pt-5 mt-5 shadow-lg p-5 mb-5 bg-white rounded">		
 	<h2 id="model-overview" style="text-align: center;">Model Overview</h2>
 	<body>
 	<p style="text-align: center;">
@@ -70,12 +69,15 @@ Speech samples are available at <a href="speechtranslation.github.io/lm4s2st"> h
 	</p>
 	</body>
 		<p>
-			<b>Figure.</b> Overview of LM4S2ST
+			<b>Figure.</b> Overview of LM4S2ST. We introduce LM4S2ST, a novel language model-based framework for speech-to-speech translation capable of handling both written and unwritten languages. 
+			The proposed framework utilizes discrete units, obtained through self-supervised training methods like HuBERT, as an intermediate representation between source speech and target speech. 
+			It consists of two parts: a speech-to-unit translation (S2UT) front-end converts the speech in source language into the unit in target language, and a unit-to-speech (U2S) back-end synthesizes speech of translation while preserving the source speaker's style.
 		</p>
 </div>
 
-<div class="container pt-5 mt-5 shadow p-5 mb-5 bg-white rounded">
+<div class="container pt-5 mt-5 shadow-lg p-5 mb-5 bg-white rounded">
 	<h2 id="xtts-samples" style="text-align: center;">Zero-Shot Cross-Lingual Unit to Speech</h2>
+	<br>
 	<h4 id="xtts-samples-en" style="text-align: center;">English TTS with Chinese prompts</h4>
 	<br>
 		<div class="table-responsive pt-3">
@@ -125,6 +127,7 @@ Speech samples are available at <a href="speechtranslation.github.io/lm4s2st"> h
 	<br>
 	<h4 id="xtts-samples-spanish" style="text-align: center;">Spanish TTS with English prompts</h4>
 	<br>
+	
 		<div class="table-responsive pt-3">
 			<table class="table table-hover pt-2">
 				<thead>
@@ -136,34 +139,34 @@ Speech samples are available at <a href="speechtranslation.github.io/lm4s2st"> h
 				</thead>
 				<tbody>
 					<tr>
-					<td style="text-align: center"><audio controls="controls" style="width: 140px;"><source src="audios/xtts_spanish/xtts-sample-1-speech.wav" autoplay/>Your browser does not support the audio element.</audio><p>la niña chole estaba maldita como mirra y como salomé.</p></td>
+					<td style="text-align: center"><audio controls="controls" style="width: 140px;"><source src="audios/xtts_spanish/xtts-sample-1-speech.wav" autoplay/>Your browser does not support the audio element.</audio><p>La niña chole estaba maldita como mirra y como salomé.</p></td>
 					<td style="text-align: center"><audio controls="controls" style="width: 140px;"><source src="audios/xtts_spanish/xtts-sample-1-prompt.wav" autoplay/>Your browser does not support the audio element.</audio><p>Besides these fees, legitimate and illegitimate, there were others which must be paid before release.</p></td>
-					<td style="text-align: center"><audio controls="controls" style="width: 140px;"><source src="audios/xtts_spanish/xtts-sample-1-result.wav" autoplay/>Your browser does not support the audio element.</audio><p>la niña chole estaba maldita como mirra y como salomé.</p></td>
+					<td style="text-align: center"><audio controls="controls" style="width: 140px;"><source src="audios/xtts_spanish/xtts-sample-1-result.wav" autoplay/>Your browser does not support the audio element.</audio><p>La niña chole estaba maldita como mirra y como salomé.</p></td>
 					</tr>
 					<tr>
-					<td style="text-align: center"><audio controls="controls" style="width: 140px;"><source src="audios/xtts_spanish/xtts-sample-2-speech.wav" autoplay/>Your browser does not support the audio element.</audio><p>no puedes dejar que las pesadillas te hagan mella.</p></td>
+					<td style="text-align: center"><audio controls="controls" style="width: 140px;"><source src="audios/xtts_spanish/xtts-sample-2-speech.wav" autoplay/>Your browser does not support the audio element.</audio><p>No puedes dejar que las pesadillas te hagan mella.</p></td>
 					<td style="text-align: center"><audio controls="controls" style="width: 140px;"><source src="audios/xtts_spanish/xtts-sample-2-prompt.wav" autoplay/>Your browser does not support the audio element.</audio><p>Visits to Other Texas Cities</p></td>
-					<td style="text-align: center"><audio controls="controls" style="width: 140px;"><source src="audios/xtts_spanish/xtts-sample-2-result.wav" autoplay/>Your browser does not support the audio element.</audio><p>no puedes dejar que las pesadillas te hagan media.</p></td>
+					<td style="text-align: center"><audio controls="controls" style="width: 140px;"><source src="audios/xtts_spanish/xtts-sample-2-result.wav" autoplay/>Your browser does not support the audio element.</audio><p>No puedes dejar que las pesadillas te hagan media.</p></td>
 					</tr>
 					<tr>
-					<td style="text-align: center"><audio controls="controls" style="width: 140px;"><source src="audios/xtts_spanish/xtts-sample-3-speech.wav" autoplay/>Your browser does not support the audio element.</audio><p>adela me trae de cabeza y me he enamorado.</p></td>
-					<td style="text-align: center"><audio controls="controls" style="width: 140px;"><source src="audios/xtts_spanish/xtts-sample-3-prompt.wav" autoplay/>Your browser does not support the audio element.</audio><p>it was the strongest circumstantial evidence which had ever been brought forward in a murder case.</p></td>
-					<td style="text-align: center"><audio controls="controls" style="width: 140px;"><source src="audios/xtts_spanish/xtts-sample-3-result.wav" autoplay/>Your browser does not support the audio element.</audio><p>adela me trae de cabeza y me he enamorado.</p></td>
+					<td style="text-align: center"><audio controls="controls" style="width: 140px;"><source src="audios/xtts_spanish/xtts-sample-3-speech.wav" autoplay/>Your browser does not support the audio element.</audio><p>Adela me trae de cabeza y me he enamorado.</p></td>
+					<td style="text-align: center"><audio controls="controls" style="width: 140px;"><source src="audios/xtts_spanish/xtts-sample-3-prompt.wav" autoplay/>Your browser does not support the audio element.</audio><p>It was the strongest circumstantial evidence which had ever been brought forward in a murder case.</p></td>
+					<td style="text-align: center"><audio controls="controls" style="width: 140px;"><source src="audios/xtts_spanish/xtts-sample-3-result.wav" autoplay/>Your browser does not support the audio element.</audio><p>Adela me trae de cabeza y me he enamorado.</p></td>
 					</tr>	
 					<tr>
-					<td style="text-align: center"><audio controls="controls" style="width: 140px;"><source src="audios/xtts_spanish/xtts-sample-4-speech.wav" autoplay/>Your browser does not support the audio element.</audio><p>hablando de esta suerte nos hizo cruzar un largo corredor.</p></td>
-					<td style="text-align: center"><audio controls="controls" style="width: 140px;"><source src="audios/xtts_spanish/xtts-sample-4-prompt.wav" autoplay/>Your browser does not support the audio element.</audio><p>it truly is asserted the magician.</p></td>
-					<td style="text-align: center"><audio controls="controls" style="width: 140px;"><source src="audios/xtts_spanish/xtts-sample-4-result.wav" autoplay/>Your browser does not support the audio element.</audio><p>hablando de esta suerte nos hizo cruzar un largo corredor.</p></td>
+					<td style="text-align: center"><audio controls="controls" style="width: 140px;"><source src="audios/xtts_spanish/xtts-sample-4-speech.wav" autoplay/>Your browser does not support the audio element.</audio><p>Hablando de esta suerte nos hizo cruzar un largo corredor.</p></td>
+					<td style="text-align: center"><audio controls="controls" style="width: 140px;"><source src="audios/xtts_spanish/xtts-sample-4-prompt.wav" autoplay/>Your browser does not support the audio element.</audio><p>It truly is asserted the magician.</p></td>
+					<td style="text-align: center"><audio controls="controls" style="width: 140px;"><source src="audios/xtts_spanish/xtts-sample-4-result.wav" autoplay/>Your browser does not support the audio element.</audio><p>Hablando de esta suerte nos hizo cruzar un largo corredor.</p></td>
 					</tr>	
 					<tr>
-					<td style="text-align: center"><audio controls="controls" style="width: 140px;"><source src="audios/xtts_spanish/xtts-sample-5-speech.wav" autoplay/>Your browser does not support the audio element.</audio><p>hay tres tipos de hombres: los que se lanzan sin complejos.</p></td>
-					<td style="text-align: center"><audio controls="controls" style="width: 140px;"><source src="audios/xtts_spanish/xtts-sample-5-prompt.wav" autoplay/>Your browser does not support the audio element.</audio><p>they count six and this singer is as good as nothing.</p></td>
-					<td style="text-align: center"><audio controls="controls" style="width: 140px;"><source src="audios/xtts_spanish/xtts-sample-5-result.wav" autoplay/>Your browser does not support the audio element.</audio><p>hay tres tipos de opas los que se lanzan sin complejos.</p></td>
+					<td style="text-align: center"><audio controls="controls" style="width: 140px;"><source src="audios/xtts_spanish/xtts-sample-5-speech.wav" autoplay/>Your browser does not support the audio element.</audio><p>Hay tres tipos de hombres: los que se lanzan sin complejos.</p></td>
+					<td style="text-align: center"><audio controls="controls" style="width: 140px;"><source src="audios/xtts_spanish/xtts-sample-5-prompt.wav" autoplay/>Your browser does not support the audio element.</audio><p>They count six and this singer is as good as nothing.</p></td>
+					<td style="text-align: center"><audio controls="controls" style="width: 140px;"><source src="audios/xtts_spanish/xtts-sample-5-result.wav" autoplay/>Your browser does not support the audio element.</audio><p>Hay tres tipos de opas los que se lanzan sin complejos.</p></td>
 					</tr>	
 					<tr>
-					<td style="text-align: center"><audio controls="controls" style="width: 140px;"><source src="audios/xtts_spanish/xtts-sample-6-speech.wav" autoplay/>Your browser does not support the audio element.</audio><p>el viaje se iba a realizar en septiembre..</p></td>
-					<td style="text-align: center"><audio controls="controls" style="width: 140px;"><source src="audios/xtts_spanish/xtts-sample-6-prompt.wav" autoplay/>Your browser does not support the audio element.</audio><p>this was at the march election eighteen fifty five.</p></td>
-					<td style="text-align: center"><audio controls="controls" style="width: 140px;"><source src="audios/xtts_spanish/xtts-sample-6-result.wav" autoplay/>Your browser does not support the audio element.</audio><p>el viaje se iba a realizar en septiembre.</p></td>
+					<td style="text-align: center"><audio controls="controls" style="width: 140px;"><source src="audios/xtts_spanish/xtts-sample-6-speech.wav" autoplay/>Your browser does not support the audio element.</audio><p>El viaje se iba a realizar en septiembre..</p></td>
+					<td style="text-align: center"><audio controls="controls" style="width: 140px;"><source src="audios/xtts_spanish/xtts-sample-6-prompt.wav" autoplay/>Your browser does not support the audio element.</audio><p>This was at the march election eighteen fifty five.</p></td>
+					<td style="text-align: center"><audio controls="controls" style="width: 140px;"><source src="audios/xtts_spanish/xtts-sample-6-result.wav" autoplay/>Your browser does not support the audio element.</audio><p>El viaje se iba a realizar en septiembre.</p></td>
 					</tr>	
 				</tbody>
 			</table>
@@ -173,8 +176,10 @@ Speech samples are available at <a href="speechtranslation.github.io/lm4s2st"> h
 </div>
 
 
-<div class="container pt-5 mt-5 shadow p-5 mb-5 bg-white rounded">
+<div class="container pt-5 mt-5 shadow-lg p-5 mb-5 bg-white rounded">
 	<h2 id="s2st-samples" style="text-align: center;">Zero-Shot Speech-to-Speech Translation</h2>
+	<br>
+
 	<h4 style="text-align: center;">Written language (Chinese to English Translation on EMIME dataset)</h4>
 	<br>
 		<div class="table-responsive pt-3">
@@ -235,33 +240,33 @@ Speech samples are available at <a href="speechtranslation.github.io/lm4s2st"> h
 				<tbody>
 					<tr>
 					<td style="text-align: center"><audio controls="controls" style="width: 140px;"><source src="audios/s2st_unwritten/s2st-sample-1-speech.wav" autoplay/>Your browser does not support the audio element.</audio><p>The japanese developed the city especially the port.</p></td>
-					<td style="text-align: center"><audio controls="controls" style="width: 140px;"><source src="audios/s2st_unwritten/s2st-sample-1-GT.wav" autoplay/>Your browser does not support the audio element.</audio><p>los japoneses desarrollaron la ciudad especialmente el puerto.</p></td>
-					<td style="text-align: center"><audio controls="controls" style="width: 140px;"><source src="audios/s2st_unwritten/s2st-sample-1-result.wav" autoplay/>Your browser does not support the audio element.</audio><p>los japoneses desarrollaron la ciudad especialmente el puerto.</p></td>
+					<td style="text-align: center"><audio controls="controls" style="width: 140px;"><source src="audios/s2st_unwritten/s2st-sample-1-GT.wav" autoplay/>Your browser does not support the audio element.</audio><p>Los japoneses desarrollaron la ciudad especialmente el puerto.</p></td>
+					<td style="text-align: center"><audio controls="controls" style="width: 140px;"><source src="audios/s2st_unwritten/s2st-sample-1-result.wav" autoplay/>Your browser does not support the audio element.</audio><p>Los japoneses desarrollaron la ciudad especialmente el puerto.</p></td>
 					</tr>
 					<tr>
 					<td style="text-align: center"><audio controls="controls" style="width: 140px;"><source src="audios/s2st_unwritten/s2st-sample-2-speech.wav" autoplay/>Your browser does not support the audio element.</audio><p>This album sounds modern and fresh.</p></td>
-					<td style="text-align: center"><audio controls="controls" style="width: 140px;"><source src="audios/s2st_unwritten/s2st-sample-2-GT.wav" autoplay/>Your browser does not support the audio element.</audio><p> este álbum suena moderno y fresco.</p></td>
-					<td style="text-align: center"><audio controls="controls" style="width: 140px;"><source src="audios/s2st_unwritten/s2st-sample-2-result.wav" autoplay/>Your browser does not support the audio element.</audio><p> este álbum suena moderno y fresco.</p></td>
+					<td style="text-align: center"><audio controls="controls" style="width: 140px;"><source src="audios/s2st_unwritten/s2st-sample-2-GT.wav" autoplay/>Your browser does not support the audio element.</audio><p> Este álbum suena moderno y fresco.</p></td>
+					<td style="text-align: center"><audio controls="controls" style="width: 140px;"><source src="audios/s2st_unwritten/s2st-sample-2-result.wav" autoplay/>Your browser does not support the audio element.</audio><p> Este álbum suena moderno y fresco.</p></td>
 					</tr>
 					<tr>
 					<td style="text-align: center"><audio controls="controls" style="width: 140px;"><source src="audios/s2st_unwritten/s2st-sample-3-speech.wav" autoplay/>Your browser does not support the audio element.</audio><p>The band has had several formations.</p></td>
-					<td style="text-align: center"><audio controls="controls" style="width: 140px;"><source src="audios/s2st_unwritten/s2st-sample-3-GT.wav" autoplay/>Your browser does not support the audio element.</audio><p>la banda ha tenido varias formaciones.</p></td>
-					<td style="text-align: center"><audio controls="controls" style="width: 140px;"><source src="audios/s2st_unwritten/s2st-sample-3-result.wav" autoplay/>Your browser does not support the audio element.</audio><p>la banda ha tenido varias formaciones.</p></td>
+					<td style="text-align: center"><audio controls="controls" style="width: 140px;"><source src="audios/s2st_unwritten/s2st-sample-3-GT.wav" autoplay/>Your browser does not support the audio element.</audio><p>A banda ha tenido varias formaciones.</p></td>
+					<td style="text-align: center"><audio controls="controls" style="width: 140px;"><source src="audios/s2st_unwritten/s2st-sample-3-result.wav" autoplay/>Your browser does not support the audio element.</audio><p>La banda ha tenido varias formaciones.</p></td>
 					</tr>	
 					<tr>
 					<td style="text-align: center"><audio controls="controls" style="width: 140px;"><source src="audios/s2st_unwritten/s2st-sample-4-speech.wav" autoplay/>Your browser does not support the audio element.</audio><p>Israeli explorers come from all sectors of the country's society</p></td>
-					<td style="text-align: center"><audio controls="controls" style="width: 140px;"><source src="audios/s2st_unwritten/s2st-sample-4-GT.wav" autoplay/>Your browser does not support the audio element.</audio><p>los exploradores israelíes provienen de todos los sectores de la sociedad del país.</p></td>
-					<td style="text-align: center"><audio controls="controls" style="width: 140px;"><source src="audios/s2st_unwritten/s2st-sample-4-result.wav" autoplay/>Your browser does not support the audio element.</audio><p>los exploradores israelíes provienen de todos los sectores de la sociedad del país.</p></td>
+					<td style="text-align: center"><audio controls="controls" style="width: 140px;"><source src="audios/s2st_unwritten/s2st-sample-4-GT.wav" autoplay/>Your browser does not support the audio element.</audio><p>Los exploradores israelíes provienen de todos los sectores de la sociedad del país.</p></td>
+					<td style="text-align: center"><audio controls="controls" style="width: 140px;"><source src="audios/s2st_unwritten/s2st-sample-4-result.wav" autoplay/>Your browser does not support the audio element.</audio><p>Los exploradores israelíes provienen de todos los sectores de la sociedad del país.</p></td>
 					</tr>	
 					<tr>
 					<td style="text-align: center"><audio controls="controls" style="width: 140px;"><source src="audios/s2st_unwritten/s2st-sample-5-speech.wav" autoplay/>Your browser does not support the audio element.</audio><p>Political science professor at the university of paris.</p></td>
-					<td style="text-align: center"><audio controls="controls" style="width: 140px;"><source src="audios/s2st_unwritten/s2st-sample-5-GT.wav" autoplay/>Your browser does not support the audio element.</audio><p>profesor de ciencias políticas en la universidad de parís.</p></td>
-					<td style="text-align: center"><audio controls="controls" style="width: 140px;"><source src="audios/s2st_unwritten/s2st-sample-5-result.wav" autoplay/>Your browser does not support the audio element.</audio><p>profesor de ciencias políticas en la universidad de parís.</p></td>
+					<td style="text-align: center"><audio controls="controls" style="width: 140px;"><source src="audios/s2st_unwritten/s2st-sample-5-GT.wav" autoplay/>Your browser does not support the audio element.</audio><p>Profesor de ciencias políticas en la universidad de parís.</p></td>
+					<td style="text-align: center"><audio controls="controls" style="width: 140px;"><source src="audios/s2st_unwritten/s2st-sample-5-result.wav" autoplay/>Your browser does not support the audio element.</audio><p>Profesor de ciencias políticas en la universidad de parís.</p></td>
 					</tr>	
 					<tr>
 					<td style="text-align: center"><audio controls="controls" style="width: 140px;"><source src="audios/s2st_unwritten/s2st-sample-6-speech.wav" autoplay/>Your browser does not support the audio element.</audio><p>The last brother's name is unknown.</p></td>
-					<td style="text-align: center"><audio controls="controls" style="width: 140px;"><source src="audios/s2st_unwritten/s2st-sample-6-GT.wav" autoplay/>Your browser does not support the audio element.</audio><p>el nombre del último hermano es desconocido.</p></td>
-					<td style="text-align: center"><audio controls="controls" style="width: 140px;"><source src="audios/s2st_unwritten/s2st-sample-6-result.wav" autoplay/>Your browser does not support the audio element.</audio><p>el nombre del último hermano es desconocido.</p></td>
+					<td style="text-align: center"><audio controls="controls" style="width: 140px;"><source src="audios/s2st_unwritten/s2st-sample-6-GT.wav" autoplay/>Your browser does not support the audio element.</audio><p>El nombre del último hermano es desconocido.</p></td>
+					<td style="text-align: center"><audio controls="controls" style="width: 140px;"><source src="audios/s2st_unwritten/s2st-sample-6-result.wav" autoplay/>Your browser does not support the audio element.</audio><p>El nombre del último hermano es desconocido.</p></td>
 					</tr>	
 				</tbody>
 			</table>
