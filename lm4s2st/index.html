@@ -10,7 +10,7 @@
 	<link rel="stylesheet" href="css/custom.css">
 	<link rel="stylesheet" href="css/normalize.css">
 
-	<title>LM4S2ST</title>
+	<title>PolyVoice</title>
 	<link href="css/bootstrap.min.css" rel="stylesheet">
 
 </head>
@@ -26,26 +26,27 @@
 
 <div class="container pt-5 mt-5 shadow-lg p-5 mb-5 bg-white rounded">
 	<div class="text-center">
-	<h1>LM4S2ST:</h1>
+	<h1>PolyVoice:</h1>
         <h4>Language Models for Speech to Speech Translation</h4>
 		<!-- [<a href="https://arxiv.org/abs/2303.03926">Paper</a>] -->
 		[<a>Paper</a>]
 
         <p class="fst-italic mb-0">
           <br>
-		  Qianqian Dong∗, Zhiying Huang∗, Chen Xu, Yunlong Zhao, Kexin Wang, Xuxin Cheng, Tom Ko, Qiao Tian, <br>
-			Tang Li, Fengpeng Yue, Ye Bai, Xi Chen, Lu Lu, Zejun Ma, Yuping Wang, Mingxuan Wang, Yuxuan Wang
+		  Qianqian Dong∗, Zhiying Huang∗, Chen Xu, Yunlong Zhao, Kexin Wang, Xuxin Cheng, Tom Ko, Qiao Tian,<br>
+			Tang Li, Fengpeng Yue, Ye Bai, Xi Chen, Lu Lu, Zejun Ma, Yuping Wang, Mingxuan Wang, Yuxu
       <p></p>
         </p>
         <p><b>ByteDance</b></p>
 	</div>
 	<p>
         <b>Abstract.</b> 
-		We propose LM4S2ST, a language model-based framework for speech-to-speech translation (S2ST) system. Our framework consists of two language models: a translation language model and a speech
-synthesis language model. We use discretized speech units, which are generated in a fully unsupervised way, and thus our framework can be used for unwritten languages. For the speech synthesis part, we adopt the existing VALL-E X approach and build a unit-based audio language model. 
-This grants our framework the ability to preserve the voice characteristics and the speaking style of the original speech.
-We examine our system on Chinese->English and English->Spanish pairs.
-Experimental results show that our system can generate speech with high translation quality and audio quality. 
+		We propose PolyVoice, a language model-based framework for speech-to-speech translation (S2ST) system. 
+		Our framework consists of two language models: a translation language model and a speech synthesis language model.
+		We use discretized speech units, which are generated in a fully unsupervised way, and thus our framework can be used for unwritten languages. 
+		For the speech synthesis part, we adopt the existing VALL-E X approach and build a unit-based audio language model. 
+		This grants our framework the abilityto preserve the voice characteristics and the speaking style of the original speech. 
+		We examine our system on Chinese->English and English->Spanish pairs. Experimental results show that our system can generate speech with high translation quality and audio quality. 
       </p>     
 	  <p>This page is for <b>research demonstration purposes</b> only.</p>
 
@@ -70,9 +71,7 @@ Experimental results show that our system can generate speech with high translat
 	</p>
 	</body>
 		<p>
-			<b>Figure.</b> Overview of LM4S2ST. We introduce LM4S2ST, a novel language model-based framework for speech-to-speech translation capable of handling both written and unwritten languages. 
-			The proposed framework utilizes discrete units, obtained through self-supervised training methods like HuBERT, as an intermediate representation between source speech and target speech. 
-			It consists of two parts: a speech-to-unit translation (S2UT) front-end converts the speech in source language into the unit in target language, and a unit-to-speech (U2S) back-end synthesizes speech of translation while preserving the source speaker's style.
+			<b>Figure.</b> Overview of PolyVoice. The framework consists of two LM-based components: a S2UT front-end for translation and a U2S back-end for synthesis.
 		</p>
 </div>
 
