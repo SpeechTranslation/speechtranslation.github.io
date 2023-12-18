@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<meta name="generator" content="Hugo 0.88.1" />
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link href="https://fonts.googleapis.com/css?family=Roboto:300,400,700" rel="stylesheet" type="text/css">
+	<link rel="stylesheet" href=""https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/styles/github.min.css">
+	<link rel="stylesheet" href="css/custom.css">
+	<link rel="stylesheet" href="css/normalize.css">
+
+	<title>LLM-ST</title>
+	<link href="css/bootstrap.min.css" rel="stylesheet">
+
+</head>
+
+
+<body data-new-gr-c-s-check-loaded="14.1091.0" data-gr-ext-installed="">
+
+<div class="container" >
+<header role="banner">
+</header>
+<main role="main">
+<article itemscope itemtype="https://schema.org/BlogPosting">
+
+<div class="container pt-5 mt-5 shadow-lg p-5 mb-5 bg-white rounded">
+	<div class="text-center">
+	<h2>Speech Translation with Large Language Models: An Industrial Practice</h2>
+		<!-- [<a href="https://arxiv.org/abs/???????">Paper</a>] -->
+
+        <p class="fst-italic mb-0">
+          <br>
+		  		Zhichao Huang*, Rong Ye*, Tom Ko, Qianqian Dong, Shanbo Cheng, Mingxuan Wang, Hang Li <br>
+      <p></p>
+        </p>
+        <p><b>ByteDance</b></p>
+        <p><b>{zhichao.huang, yerong}@bytedance.com</b></p>
+	</div>
+	<p>
+        <b>Abstract.</b> 
+		Given the great success of large language models (LLMs) across various tasks, in this paper, we introduce <b>LLM-ST</b>, a cutting-edge speech translation model constructed upon a pre-trained LLM. By integrating the large language model with a speech encoder and employing multi-task instruction tuning, LLM-ST can produce accurate timestamped transcriptions and translations, even from long audio inputs. Furthermore, our findings indicate that the implementation of Chain-of-Thought (CoT) prompting can yield advantages in the context of LLM-ST. Through rigorous experimentation on English and Chinese datasets, we showcase the exceptional performance of LLM-ST, establishing a new benchmark in the field of speech translation.
+      </p>     
+	  <p>This page is for <b>research demonstration purposes</b> only.</p>
+
+	<p>
+	<b>Contents</b>
+      <ul>
+        <li><a href="#model-overview">Model Overview</a></li>
+        <li><a href="#s2t-video-samples">Examples of Long Speech Recognition and Translation</a></li>
+        <li><a href="#s2t-audio-samples">Examples of Speech Translations</a></li>
+      </ul>
+	</p>   
+
+	
+</div>
+
+
+<div class="container pt-5 mt-5 shadow-lg p-5 mb-5 bg-white rounded">		
+	<h2 id="model-overview" style="text-align: center;">Model Overview</h2>
+	<body>
+	<p style="text-align: center;">
+		<img src="llmst_framework.png" height="300" width="600">
+	</p>
+	</body>
+		<p style="text-align: center;" >
+			<b>Figure.</b> Overview of LLM-ST. The framework consists of two LM-based components: an Audio Encoder and an Audio-Conditioned LLM.
+		</p>
+</div>
+
+<div class="container pt-5 mt-5 shadow-lg p-5 mb-5 bg-white rounded">
+	<h2 id="s2t-video-samples" style="text-align: center;">Examples of Speech-to-text Recognition and Translation</h2>
+	<br>
+	<h4 id="s2t-video-samples-en2zh" style="text-align: center;">English-to-Chinese Translation</h4>
+	
+	<p style="text-align: center;">
+
+		<!-- <video width="640" height="360" controls>
+  	<source src="videos/eng_novel.mp4" type="video/mp4">
+  	<source src="videos/eng_novel.ogg" type="video/ogg">
+  	Your browser does not support the <code>video</code> element.
+		</video> -->
+		<iframe width="640" height="360" src="https://lf3-nlp-opensource.bytetos.com/obj/nlp-opensource/llmst/llmst_case_en.mp4" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+	</p>
+	
+	
+	<h4 id="s2t-video-samples-zh2en" style="text-align: center;">Chinese to English Translation</h4>
+	<p style="text-align: center;">
+
+		<iframe width="640" height="360" src="https://lf3-nlp-opensource.bytetos.com/obj/nlp-opensource/llmst/llmst_case_zh.mp4" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+	</p>
+
+</div>
+
+
+<div class="container pt-5 mt-5 shadow-lg p-5 mb-5 bg-white rounded">
+	<h2 id="s2st-samples" style="text-align: center;">Examples of Speech Translations</h2>
+	<br>
+	<h4 style="text-align: center;">Prosody helps the translation</h4>
+	<br>
+		<div class="table-responsive pt-4">
+			<table class="table table-hover pt-2">
+				<thead>
+				<tr>
+				<th style="text-align: center">English Speech </th>
+				<th style="text-align: center">ASR</th>
+				<th style="text-align: center">Cascaded System</th>
+				<th style="text-align: center">LLM-ST</th>
+				</tr>
+				</thead>
+				<tbody>
+					<tr>
+					<td style="text-align: center"><audio controls="controls" style="width: 190px;"><source src="audios/help_help.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+					<td style="text-align: center"><p>Help! Help! ahhhhh!</p></td>
+					<td style="text-align: center"><p>帮助帮助。 啊。</p></td>
+					<td style="text-align: center"><p>救命！救命！</p></td>
+					</tr>
+
+					<tr>
+					<td style="text-align: center"><audio controls="controls" style="width: 190px;"><source src="audios/One_finger_or_two_fingers.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+					<td style="text-align: center"><p>One finger or two fingers?</p></td>
+					<td style="text-align: center"><p>一个手指或两个手指。</p></td>
+					<td style="text-align: center"><p>一根手指还是两根手指？</p></td>
+					</tr>
+
+					<tr>
+					<td style="text-align: center"><audio controls="controls" style="width: 190px;"><source src="audios/You_guys_like_dumplings.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+					<td style="text-align: center;"><p>You guys like dumplings?</p></td>
+					<td style="text-align: center"><p>你们喜欢饺子。</p></td>
+					<td style="text-align: center"><p>你们喜欢饺子吗？</p></td>
+					</tr>
+
+					<tr>
+					<td style="text-align: center"><audio controls="controls" style="width: 190px;"><source src="audios/To_Vanessa.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+					<td style="text-align: center"><p>To Vanessa, Natalia, Bianca, Capri, my wife and I will keep you close in our hearts and our prayers.</p></td>
+					<td style="text-align: center"><p>致凡妮莎·娜塔莉亚·比安卡·卡普里。 我和我的妻子会在我们的心中，在我们的祈祷中把你放在身边。</p></td>
+					<td style="text-align: center"><p>致瓦妮莎，娜塔莉亚，比安卡，卡普里，我的妻子和我，我们将在心中和祈祷中与你们同在。</p></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	<br>
+
+	<h4 style="text-align: center;">Context helps to resolve ambiguity</h4>
+	<br>
+		<div class="table-responsive pt-4">
+			<table class="table table-hover pt-2">
+				<thead>
+				<tr>
+				<th style="text-align: center">English Speech </th>
+				<th style="text-align: center">ASR</th>
+				<th style="text-align: center">Cascaded System</th>
+				<th style="text-align: center">LLM-ST</th>
+				</tr>
+				</thead>
+				<tbody>
+					<tr>
+					<td style="text-align: center"><audio controls="controls" style="width: 190px;"><source src="audios/foundation.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+					<td style="text-align: center"><p>We're actually foundation, um, owned, so we have less of the quarterly pressure.</p></td>
+					<td style="text-align: center"><p>我们实际上建立了自己的基础。 所以我们的季度压力较小。</p></td>
+					<td style="text-align: center"><p>我们实际上是基金会所有，所以我们的季度压力更小。</p></td>
+					</tr>
+
+					<tr>
+					<td style="text-align: center"><audio controls="controls" style="width: 190px;"><source src="audios/stocks.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+					<td style="text-align: center"><p>Stocks are not as complicated as those Wall Street firms make you believe.</p></td>
+					<td style="text-align: center"><p>文档并不像那些华尔街公司让你相信的那么复杂。</p></td>
+					<td style="text-align: center"><p>股票并不像那些华尔街公司让你相信的那样复杂。</p></td>
+					</tr>
+
+					<tr>
+					<td style="text-align: center"><audio controls="controls" style="width: 190px;"><source src="audios/relentless.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+					<td style="text-align: center"><p>When it's tough, will you give up, or will you be relentless?</p></td>
+					<td style="text-align: center"><p>艰难的时候，你会放弃还是会毫不留情？</p></td>
+					<td style="text-align: center"><p>困难的时候，你会放弃，还是会坚持不懈？</p></td>
+					</tr>
+
+					<tr>
+					<td style="text-align: center"><audio controls="controls" style="width: 190px;"><source src="audios/cynic_builder.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+					<td style="text-align: center"><p>Will you be a cynic, or will you be a builder?</p></td>
+					<td style="text-align: center"><p>你会成为一个愤世嫉俗的人 还是一个建筑工人？</p></td>
+					<td style="text-align: center"><p>你会成为一个愤世嫉俗者，还是会成为一个建设者？</p></td>
+					</tr>
+
+					<tr>
+					<td style="text-align: center"><audio controls="controls" style="width: 190px;"><source src="audios/damascus.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+					<td style="text-align: center"><p>All right, we're back in Damascus right now, after a two hour drive from Homs.</p></td>
+					<td style="text-align: center"><p>在大马士革，从皇家海军驱车两小时后。</p></td>
+					<td style="text-align: center"><p>现在在大马士革，从霍姆斯出发开了两个小时的车。</p></td>
+					</tr>
+
+					<tr>
+					<td style="text-align: center"><audio controls="controls" style="width: 190px;"><source src="audios/taxi.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+					<td style="text-align: center"><p>Yeah, I looked up before that, as long as you get the official taxi stand, then it should be about 100 RMB to the center of Beijing.</p></td>
+					<td style="text-align: center"><p>是的，在那之前我抬头看了看。 只要你有官方的出租车站，那么到北京市中心应该大约需要100元人民币。</p></td>
+					<td style="text-align: center"><p>是的，我之前查过，只要你到官方的出租车停靠站， 到北京市中心大约需要100元人民币。</p></td>
+					</tr>
+
+
+				</tbody>
+			</table>
+		</div>
+	<br>
+
+	<h4 style="text-align: center;">Better Translations for code-switch speech</h4>
+	<br>
+		<div class="table-responsive pt-4">
+			<table class="table table-hover pt-2">
+				<thead>
+				<tr>
+				<th style="text-align: center">English Speech </th>
+				<th style="text-align: center">ASR</th>
+				<th style="text-align: center">Cascaded System</th>
+				<th style="text-align: center">LLM-ST</th>
+				</tr>
+				</thead>
+				<tbody>
+					<tr>
+					<td style="text-align: center"><audio controls="controls" style="width: 190px;"><source src="audios/sanbeiji.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+					<td style="text-align: center"><p>But in Taiwan, where I learned about Sanbeiji, Thai basil is always part of the dish.</p></td>
+					<td style="text-align: center"><p>但是在台湾，我了解了桑拜吉，泰国罗勒总是这道菜的一部分。</p></td>
+					<td style="text-align: center"><p>但在台湾，我了解到三杯鸡， 泰国罗勒总是这道菜的一部分。</p></td>
+					</tr>
+
+					<tr>
+					<td style="text-align: center"><audio controls="controls" style="width: 190px;"><source src="audios/sanbeiji2.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+					<td style="text-align: center"><p>I tried that. Didn't work at all for me, so stick with Thai basil and enjoy your delicious Sanbeiji.</p></td>
+					<td style="text-align: center"><p>我试过了。那对我一点用都没有。 所以坚持用泰式罗勒，享受你美味的桑白吉。</p></td>
+					<td style="text-align: center"><p>我试过那个，但对我完全没用，所以坚持用泰国罗勒，享受你美味的三杯鸡。</p></td>
+					</tr>
+
+					<tr>
+					<td style="text-align: center"><audio controls="controls" style="width: 190px;"><source src="audios/fuqifeipian.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+					<td style="text-align: center"><p>Fu Qi Fei Pian literally means slices of husband and wife's lungs. Eh.</p></td>
+					<td style="text-align: center"><p>Uchife pan字面意思是丈夫和妻子的肺部切片。</p></td>
+					<td style="text-align: center"><p>夫妻肺片，字面意思是丈夫和妻子的肺片。是的。</p></td>
+					</tr>
+
+					<tr>
+					<td style="text-align: center"><audio controls="controls" style="width: 190px;"><source src="audios/unwanted_meat.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+					<td style="text-align: center"><p>It got this name because when the dish first originated, it used "Fei" or unwanted meats from cows, like cow tongues and lungs, and the dish was made best by a husband and wife duo.</p></td>
+					<td style="text-align: center"><p>它之所以有这个名字，是因为当这道菜最初起源时，一个用过的Fey吃了奶牛不想要的肉，比如凯尔顿和肺，这道菜是由一对夫妻做的最好的。</p></td>
+					<td style="text-align: center"><p>它之所以有这个名字，是因为当这道菜刚出现的时候，它使用了“废”的牛肉，比如牛舌和牛肺，这道菜是由一对夫妻共同制作的。</p></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	<br>
+
+
+		<h4 style="text-align: center;">Better Translations for name entities</h4>
+	<br>
+		<div class="table-responsive pt-4">
+			<table class="table table-hover pt-2">
+				<thead>
+				<tr>
+				<th style="text-align: center">English Speech </th>
+				<th style="text-align: center">ASR</th>
+				<th style="text-align: center">Cascaded System</th>
+				<th style="text-align: center">LLM-ST</th>
+				</tr>
+				</thead>
+				<tbody>
+					<tr>
+					<td style="text-align: center"><audio controls="controls" style="width: 190px;"><source src="audios/metaverse.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+					<td style="text-align: center"><p>And these are some of the basic concepts for the Metaverse.</p></td>
+					<td style="text-align: center"><p>这些是Metaverse的一些基本概念。</p></td>
+					<td style="text-align: center"><p>这些是元宇宙的一些基本概念。</p></td>
+					</tr>
+
+					<tr>
+					<td style="text-align: center"><audio controls="controls" style="width: 190px;"><source src="audios/fenty_beauty.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+					<td style="text-align: center"><p>The pop star and brains behind Fenty Beauty is worth an estimated 1.7 billion dollars on the 2022 list.</p></td>
+					<td style="text-align: center"><p>芬蒂美容背后的流行歌星和大脑在2022年的榜单上估计价值17亿美元。</p></td>
+					<td style="text-align: center"><p>这位流行歌星和 Fenty Beauty 背后的智囊团在 2022 年的榜单上的身价估计为 17 亿美元。</p></td>
+					</tr>
+
+					<tr>
+					<td style="text-align: center"><audio controls="controls" style="width: 190px;"><source src="audios/vetement.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+					<td style="text-align: center"><p>After bursting onto the fashion scene with the brand collective Vetements, Demna took the helm of Balenciaga in 2015 as part of a radical modernization, including the Triple S, which set a fire the ugly sneaker trend, and helped Balenciaga surpass a billion dollars in revenue in 2019, spawning a thousand copycats.</p></td>
+					<td style="text-align: center"><p>在凭借品牌闯入时尚界后 集体兽医购物中心，Demna于2015年掌舵巴黎世家，作为激进现代化的一部分， 包括Triple s， 它点燃了丑陋的运动鞋潮流，并帮助巴黎世家在2019年的收入超过10亿美元，催生了1000名模仿者。</p></td>
+					<td style="text-align: center"><p>在以品牌集合 Vetements 闯入时尚界后，德姆纳于 2015 年执掌巴黎世家， 作为激进现代化的一部分， 包括 Triple S， 它点燃了丑陋运动鞋的潮流， 并帮助巴黎世家在 2019 年的收入超过了 10 亿美元， 催生出 1000 个模仿者。</p></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	<br>
+
+	<br>
+</div>
+
+
+<!-- <div class="container pt-5 mt-5 shadow p-5 mb-5 bg-white rounded">
+	<h2 id="emotion-samples" style="text-align: center;">Voice Emotion Maintenance</h2>		
+	<br>
+</div>  -->
+
+<!-- <div class="container pt-5 mt-5 shadow p-5 mb-5 bg-white rounded">
+	<h2 id="codeswitch-samples" style="text-align: center;">Code-Switch Speech Synthesis</h2>		
+	<br>
+</div>  -->
+</article>
+</main>
+</div>
+
+</body>
+</html>
